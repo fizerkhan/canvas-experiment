@@ -1,7 +1,7 @@
 (function(window) {
 
 	var points = [],
-			numPoints = 250,
+			numPoints = 140,
 			bounce = -1,
 			particleSize = [];
 
@@ -35,17 +35,17 @@
     var fillA, fillB, fillC;
 
     if (scheme === "kite-a") {
+			fillA = "#EC008C";
       fillB = "#FFC60C";
-      fillA = "#3B5998";
       fillC = "#45B326";
     } else if (scheme === "kite-b") {
+			fillA = "#EC008C";
       fillB = "#FFC60C";
-      fillA = "#3B5998";
       fillC = "#45B326";
     } else if (scheme === "kite-c") {
       fillB = "#FFC60C";
       fillA = "#45B326";
-      fillC = "#3B5998";
+      fillC = "#EC008C";
     }
 
     context.beginPath();
@@ -61,15 +61,18 @@
     context.beginPath();
     context.rect(x, y, length, length);
     context.fillStyle=fillC;
+    context.shadowColor = 'rgba(0,0,0,0.15)';
+    context.shadowOffsetX = 2;
+    context.shadowOffsetY = 2;
     context.fill();
     context.closePath();
 		context.beginPath();
 		context.moveTo(x+(length*3),y+(length*3));
 		//context.lineTo(x+(length*3)+12,y+(length*3)+12);
 		// quadratic curve
-    context.quadraticCurveTo(120, 710, 920, 720);
+    context.quadraticCurveTo(320, 700, 40, 710);
 
-		context.strokeStyle='rgba(0,0,0,0.25)';
+		context.strokeStyle='rgba(0,0,0,0.15)';
 		context.lineWidth = 1;
 		context.stroke();
 		context.closePath();
@@ -119,7 +122,7 @@
           if (i > 100 && i < 120 ) {
             drawCircle(point.x, point.y, size, "kite-b");
           }
-          if (i > 280 && i < 300 ) {
+          if (i > 120 && i < 140 ) {
             drawCircle(point.x, point.y, size, "kite-c");
           }
       }
